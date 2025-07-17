@@ -20,21 +20,21 @@ class BlockchainService {
 
             const {
                 RPC_URL,
-                PRIVATE_KEY,
+                WALLET_PRIVATE_KEY,
                 CONTRACT_ADDRESS,
                 CHAIN_ID,
                 CHAIN_NAME,
             } = process.env;
 
-            if (!RPC_URL || !PRIVATE_KEY || !CONTRACT_ADDRESS) {
+            if (!RPC_URL || !WALLET_PRIVATE_KEY || !CONTRACT_ADDRESS) {
                 throw new Error(
-                    "Missing RPC_URL, PRIVATE_KEY, or CONTRACT_ADDRESS"
+                    "Missing RPC_URL, WALLET_PRIVATE_KEY, or CONTRACT_ADDRESS"
                 );
             }
 
-            if (!PRIVATE_KEY.startsWith("0x") || PRIVATE_KEY.length !== 66) {
+            if (!WALLET_PRIVATE_KEY.startsWith("0x") || WALLET_PRIVATE_KEY.length !== 66) {
                 throw new Error(
-                    "PRIVATE_KEY must be 64 hex characters starting with 0x"
+                    "WALLET_PRIVATE_KEY must be 64 hex characters starting with 0x"
                 );
             }
 
@@ -43,7 +43,7 @@ class BlockchainService {
                 name: CHAIN_NAME,
             });
 
-            this.wallet = new ethers.Wallet(PRIVATE_KEY, this.provider);
+            this.wallet = new ethers.Wallet(WALLET_PRIVATE_KEY, this.provider);
 
             const abi = [
                 {

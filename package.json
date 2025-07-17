@@ -26,6 +26,7 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "@nomicfoundation/hardhat-toolbox": "^6.0.0",
     "hardhat": "^2.25.0"
   }
